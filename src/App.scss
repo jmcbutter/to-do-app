@@ -9,16 +9,38 @@
 .App {
   height: 100%;
   width: 100%;
+  padding: clamp(48px, 8%, 70px) 0;
   background: var(--background-image-url) top/100% no-repeat;
+  background-color: var(--background-color);
 }
 
 .theme {
   &--light {
     --background-image-url: url("/src/assets/images/bg-mobile-light.jpg");
+    --background-color: #fafafa;
+
+    --text: #494c6b;
+    --gray-text: #9495a5;
+    --crossed-out-text: #d1d2da;
+    --blue-text: #3a7cfd;
+
+    --divider: #979797;
+
+    color: var(--text);
   }
 
   &--dark {
     --background-image-url: url("/src/assets/images/bg-mobile-dark.jpg");
+    --background-color: #393a4b;
+
+    --text: #c8cbe7;
+    --gray-text: #767992;
+    --crossed-out-text: #4d5067;
+    --blue-text: #3a7cfd;
+
+    --divider: #979797;
+
+    color: var(--text);
   }
 }
 
@@ -34,37 +56,86 @@
   }
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.Content {
+  width: max(300px, 87%);
+  margin: 0 auto;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media (min-width: 700px) {
+  .Content {
+    width: max(609px, 38%);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.Heading {
+  color: white;
+  letter-spacing: 1.2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+
+  &__theme-switch {
+    cursor: pointer;
   }
 }
 
-.card {
-  padding: 2em;
-}
+.Task {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 1.1rem 1.3rem;
+  border-radius: 5px;
+  cursor: pointer;
 
-.read-the-docs {
-  color: #888;
+  &:active {
+    cursor: grabbing;
+  }
+
+  & > * {
+    border: none;
+  }
+
+  &__Checkbox {
+    --hover-border: linear-gradient(white, white),
+      linear-gradient(135deg, #55ddff, #c058f3);
+    height: 1.25rem;
+    width: 1.25rem;
+    border-radius: 50%;
+    border: 1px solid var(--divider);
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid transparent;
+      background-image: var(--hover-border);
+      background-origin: border-box;
+      background-clip: content-box, border-box;
+    }
+
+    &--Checked {
+      --hover-border: linear-gradient(135deg, #55ddff, #c058f3),
+        linear-gradient(135deg, #55ddff, #c058f3);
+      border: 1px solid transparent;
+      background-image: linear-gradient(135deg, #55ddff, #c058f3),
+        linear-gradient(135deg, #55ddff, #c058f3);
+      background-origin: border-box;
+      background-clip: content-box, border-box;
+    }
+  }
+
+  &__Input {
+    flex: 1;
+    outline: none;
+    padding: 0 1.3rem;
+    line-height: 1;
+
+    &--Checked {
+      color: var(--gray-text);
+      text-decoration: line-through;
+    }
+  }
+
+  &__Remove {
+  }
 }
