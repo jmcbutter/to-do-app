@@ -255,6 +255,7 @@ function Task({
         className="dropzone dropzone--top"
         onDragEnter={onDragEnterTop}
         onDragOver={(e) => e.preventDefault()}
+        onTouchMove={(e) => e.preventDefault()}
         onDragLeave={onDragLeaveTop}
         onDrop={onDropAbove}
       />

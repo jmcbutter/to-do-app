@@ -292,6 +292,13 @@
 
 .reorder-note {
   padding-bottom: 4rem;
+  display: none;
+}
+
+@media (pointer: fine) {
+  .reorder-note {
+    display: block;
+  }
 }
 
 .dropzone {
