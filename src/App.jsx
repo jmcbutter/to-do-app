@@ -80,7 +80,7 @@ function App() {
     if (positionRelativeToSibling == "above") {
       editedTasks.splice(siblingIndex, 0, taskToInsert);
     } else {
-      editedTasks.splice(siblingId + 1, 0, taskToInsert);
+      editedTasks.splice(siblingIndex + 1, 0, taskToInsert);
     }
 
     setTasks(editedTasks);
