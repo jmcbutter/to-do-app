@@ -11,6 +11,8 @@
   font-weight: 400;
 
   font-size: calc(0.56vw + 10px);
+  background: var(--background-image-url) top/100% 300px no-repeat;
+  background-color: var(--background-color);
 }
 
 body {
