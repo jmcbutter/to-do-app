@@ -40,4 +40,5 @@ dist-ssr
 .DS_Store
 .prettierignore
 
-firebase-config.js
+firebase-config.jsx
+src/firebase-config.jsx
