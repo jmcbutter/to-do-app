@@ -6,23 +6,28 @@ import DesktopImg from "/src/assets/images/bg-desktop-dark.jpg";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
-  const [count, setCount] = useState(0);
   const [theme, setTheme] = useState("light");
-  const [tasks, setTasks] = useState([
-    { id: 0, name: "Task #1", completed: false },
-    { id: 1, name: "Task #2", completed: false },
-    { id: 2, name: "Task #3", completed: false },
-    { id: 3, name: "Task #4", completed: false },
-  ]);
+  const [tasks, setTasks] = useState(
+    localStorage.getItem("tasks")
+      ? JSON.parse(localStorage.getItem("tasks"))
+      : []
+  );
   const [filter, setFilter] = useState("All");
   const [displayedTasks, setDisplayedTasks] = useState(tasks);
   const [dragging, setDragging] = useState();
+
+  console.log(localStorage.getItem("Tasks"));
+  // localStorage.clear();
 
   useEffect(() => {
     let root = document.documentElement;
     root.classList.remove("theme--light", "theme--dark");
     root.classList.add(`theme--${theme}`);
   }, [theme]);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   function toggleTaskCompleted(id) {
     const editedTasks = tasks.map((task) => {
@@ -293,6 +298,7 @@ function TaskInput({ tasks, setTasks }) {
         name: e.target.value,
       };
       setTasks([...tasks, newTask]);
+      e.target.value = "";
     }
   }
 
