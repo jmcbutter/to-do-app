@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.scss";
 import { SunIcon, MoonIcon, CrossIcon, CheckIcon } from "./assets/images/icons";
-import DesktopImg from "/src/assets/images/bg-desktop-dark.jpg";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
@@ -17,7 +15,6 @@ function App() {
   const [dragging, setDragging] = useState();
 
   console.log(localStorage.getItem("Tasks"));
-  // localStorage.clear();
 
   useEffect(() => {
     let root = document.documentElement;
